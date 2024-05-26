@@ -25,82 +25,22 @@ resource "aws_sns_topic" "cost_anomaly_updates" {
 }
 
 resource "aws_sns_topic_subscription" "topic_email_subscription" {
-  count     = length(var.emails)
+  count     = var.alerts.use_emails ? length(var.emails) : 0
   topic_arn = aws_sns_topic.cost_anomaly_updates.arn
   protocol  = "email"
   endpoint  = var.emails[count.index]
 }
 
 resource "aws_sns_topic_subscription" "pagerduty" {
-  count                  = var.create_pagerduty ? 1 : 0
-  endpoint               = var.pagerduty_endpoint
+  count                  = var.alerts.use_pagerduty ? 1 : 0
+  endpoint               = var.alerts.pagerduty_endpoint
   endpoint_auto_confirms = true
   protocol               = "https"
   topic_arn              = aws_sns_topic.cost_anomaly_updates.arn
 }
 
-data "aws_iam_policy_document" "sns_topic_policy" {
-  policy_id = "__default_policy_ID"
 
-  statement {
-    sid = "AWSAnomalyDetectionSNSPublishingPermissions"
 
-    actions = [
-      "SNS:Publish",
-    ]
 
-    effect = "Allow"
-
-    principals {
-      type        = "Service"
-      identifiers = ["costalerts.amazonaws.com"]
-    }
-
-    resources = [
-      aws_sns_topic.cost_anomaly_updates.arn,
-    ]
-  }
-
-  statement {
-    sid = "__default_statement_ID"
-
-    actions = [
-      "SNS:Subscribe",
-      "SNS:SetTopicAttributes",
-      "SNS:RemovePermission",
-      "SNS:Receive",
-      "SNS:Publish",
-      "SNS:ListSubscriptionsByTopic",
-      "SNS:GetTopicAttributes",
-      "SNS:DeleteTopic",
-      "SNS:AddPermission",
-    ]
-
-    condition {
-      test     = "StringEquals"
-      variable = "AWS:SourceOwner"
-
-      values = [
-        data.aws_caller_identity.current.account_id,
-      ]
-    }
-
-    effect = "Allow"
-
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-
-    resources = [
-      aws_sns_topic.cost_anomaly_updates.arn,
-    ]
-  }
-}
-
-resource "aws_sns_topic_policy" "default" {
-  arn    = aws_sns_topic.cost_anomaly_updates.arn
-  policy = data.aws_iam_policy_document.sns_topic_policy.json
-}
 
 

@@ -13,14 +13,14 @@ resource "aws_ce_anomaly_subscription" "realtime_subscription" {
     or {
       dimension {
         key           = "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
-        values        = [var.raise_amount_percent]
+        values        = [var.values.raise_amount_percent]
         match_options = ["GREATER_THAN_OR_EQUAL"]
       }
     }
     or {
       dimension {
         key           = "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
-        values        = [var.raise_amount_absolute]
+        values        = [var.values.raise_amount_absolute]
         match_options = ["GREATER_THAN_OR_EQUAL"]
       }
     }
