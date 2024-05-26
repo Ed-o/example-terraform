@@ -10,6 +10,7 @@ There is code to
 - create ECS cluster
 - setup cloud watch monitors
 - create a zabbix setup
+- Watch for aws account issues like billing (still in beta)
 
 Inside env you would create a setup for each environment you would like to have, for example - 
 - test
