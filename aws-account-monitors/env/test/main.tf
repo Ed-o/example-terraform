@@ -23,11 +23,8 @@ provider "aws" {
 module "modules" {
   source = "../../modules"
   setup = var.setup
-  emails = var.emails
-  raise_amount_percent = var.raise_amount_percent
-  raise_amount_absolute = var.raise_amount_absolute
-  create_pagerduty = var.create_pagerduty
-  pagerduty_endpoint = var.pagerduty_endpoint
+  values = var.values
+  alerts = var.alerts
 }
 
 

@@ -15,11 +15,6 @@ variable "values" {
   }
 }
 
-variable "emails" {
-  default = {
-  }
-}
-
 variable "alerts" {
   default = {
   }
