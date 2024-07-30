@@ -13,7 +13,7 @@ In Getting started.
 2.	Set up SSO :
 (note you will need to put in the 127.0.0.1 as ‘https://127...’ that is all it will allow.
 
-![picture of the MS settings](https://github.com/Ed-o/example-terraform/blob/master/aws-vpn-using-AD/docs/picture1.png?raw=true)
+![picture of the MS settings](docs/picture1.png)
 
 3.	Download the Federation XML (this is the ad file put into aws IAM)
 4.	Click on ‘App registrations’ on left menu 
