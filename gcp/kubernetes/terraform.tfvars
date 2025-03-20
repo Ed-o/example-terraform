@@ -1,0 +1,5 @@
+project_id        = "project-id"
+credentials_file  = "path/to/your/service-account.json"
+primary_region    = "us-central1"
+secondary_region  = "us-west1"
+cluster_name      = "clustername"

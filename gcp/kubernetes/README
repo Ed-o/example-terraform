@@ -1,0 +1,12 @@
+## Basic Kubernetes setup for US project
+
+terraform init
+
+terraform apply
+
+gcloud container clusters get-credentials clustername --region us-central1 --project gcp-project-id
+
+kubectl apply -f load-balancer.yaml
+
+
+
