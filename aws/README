@@ -1,0 +1,11 @@
+
+There is code to
+- create ECS cluster
+- setup cloud watch monitors
+- Watch for aws account issues like billing (still in beta)
+- Create a VPN that uses AD for auth
+
+
+
+
+

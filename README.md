@@ -2,15 +2,17 @@
 
 Hi and thanks for looking in.
 
-These are some examples for how to setup Terraform to work in AWS.
+These are some examples for how to setup and use Terraform.
 
-Inside modules we have the code that creates the items (resourses).
+The examples are broken down into where they work :
+- Azure
+- aws
+- gcp
+- ovh
+and for things that are not just host centric 
+- misc
 
-There is code to 
-- create ECS cluster
-- setup cloud watch monitors
-- create a zabbix setup
-- Watch for aws account issues like billing (still in beta)
+In most of them, inside modules we have the code that creates the items (resourses).
 
 Inside env you would create a setup for each environment you would like to have, for example - 
 - test
