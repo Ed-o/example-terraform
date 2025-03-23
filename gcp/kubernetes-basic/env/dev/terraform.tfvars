@@ -1,0 +1,10 @@
+project_id     = "your-project-id"
+region         = "europe-west2"
+environment    = "dev"
+cluster_name   = "k8s-cluster"
+node_locations = ["europe-west2-a", "europe-west2-b"]
+node_count     = 2
+machine_type   = "e2-standard-2"
+disk_size_gb   = 50
+gke_version    = "1.31.6-gke.1020000"
+subnet_cidr    = "10.0.0.0/24"
